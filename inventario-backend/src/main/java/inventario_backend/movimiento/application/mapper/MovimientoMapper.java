@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import inventario_backend.movimiento.application.dto.MovimientoRequest;
 import inventario_backend.movimiento.application.dto.MovimientoResponse;
 import inventario_backend.movimiento.domain.model.Movimiento;
-import inventario_backend.producto.domain.model.Producto; // Import necesario
+import inventario_backend.producto.domain.model.Producto;
 
 public class MovimientoMapper {
 
@@ -32,8 +32,6 @@ public class MovimientoMapper {
 
         Movimiento movimiento = new Movimiento();
 
-        // Creamos una instancia de Producto solo con su ID para guardar la llave
-        // foránea
         Producto productoRef = new Producto();
         productoRef.setId(request.productoId());
 

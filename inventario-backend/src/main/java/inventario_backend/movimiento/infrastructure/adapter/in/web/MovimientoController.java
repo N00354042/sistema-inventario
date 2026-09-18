@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import inventario_backend.movimiento.application.MovimientoService;
 import inventario_backend.movimiento.application.dto.MovimientoResponse;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -26,4 +29,11 @@ public class MovimientoController {
     public ResponseEntity<List<MovimientoResponse>> listar() {
         return ResponseEntity.ok(movimientoService.listarMovimientos());
     }
+
+    @PostMapping
+    public ResponseEntity<MovimientoResponse> registrar(
+            @Valid @RequestBody inventario_backend.movimiento.application.dto.MovimientoRequest request) {
+        return ResponseEntity.ok(movimientoService.registrarMovimiento(request));
+    }
+
 }
