@@ -1,0 +1,12 @@
+# Frontend
+**/node_modules/
+**/.angular/
+**/dist/
+
+# Backend
+**/target/
+*.class
+*.jar
+
+# Logs y temporales
+*.log
