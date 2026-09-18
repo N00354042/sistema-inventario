@@ -1,0 +1,36 @@
+<!-- Navbar: Solo se muestra si el usuario está logueado -->
+@if (estaLogueado()) {
+  <nav class="bg-blue-600 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <!-- Logo y Links -->
+        <div class="flex items-center space-x-6">
+          <h2 class="font-bold text-xl tracking-tight">Inventario Pro</h2>
+          <div class="flex space-x-2">
+            <a routerLink="/productos" routerLinkActive="bg-blue-800" class="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition cursor-pointer">
+              Productos
+            </a>
+            <a routerLink="/movimientos" routerLinkActive="bg-blue-800" class="hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium transition cursor-pointer">
+              Movimientos
+            </a>
+          </div>
+        </div>
+        
+        <!-- Controles de usuario -->
+        <div class="flex items-center space-x-4">
+          <button (click)="toggleDarkMode()" class="p-2 bg-blue-700 hover:bg-blue-800 rounded-full transition cursor-pointer" title="Cambiar tema">
+            {{ darkMode() ? '☀️' : '🌙' }}
+          </button>
+          <button (click)="logout()" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-md text-sm font-medium transition cursor-pointer shadow-sm">
+            Cerrar Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+}
+
+<!-- Router Outlet para vistas de Features -->
+<main class="min-h-screen transition-colors duration-300" [class.bg-gray-900]="darkMode()" [class.bg-gray-50]="!darkMode()">
+  <router-outlet></router-outlet>
+</main>
